@@ -11,10 +11,15 @@ class View {
 
   View(this.id, {this.color});
 
-  @override
+   @override
   String toString() {
     return '$id';
   }
+}
+
+class Text extends View {
+  String content;
+  Text(int id, this.content, {Color? color}) : super(id, color: color);
 }
 
 void main() {
@@ -27,17 +32,41 @@ void main() {
       var helloText = Text(<random id>, content: 'Hello' )
   */
 
-  int id = Random().nextInt(10000);
+  int textId = Random().nextInt(10000);
+
+  /*  
+  int nextInt(int max)
+  Generates a non-negative random integer uniformly ...
+  distributed in the range from 0, inclusive, to max, exclusive.
+  */
+
+
+  Text helloText = Text(textId,'hello',);
 
   print('hello: $helloText');
+
+  main2();
 }
 
-void task2() {
-  List<int> numbers = List.generate(75, (index) => Random().nextInt(10000));
+void main2() {
+  List<int> numbers = List.generate( 75, (index) => Random().nextInt(10000));
 
   /*
     Separate even numbers from the above `numbers` list.
     List<int> evenNumbers = ...
   */
+
+  List<int> evenNumbers = numbers.where((e) => e % 2 == 0).toList();
   print('evenNumbers: $evenNumbers');
+
+
+/*
+    Separate oddNumbers from the above `numbers` list.
+    List<int> oddNumbers = ...
+  */
+
+  //List<int> oddNumbers = numbers.where((o) => o % 2 == 1).toList();
+  //print('oddNumbers: $oddNumbers');
+
+
 }
